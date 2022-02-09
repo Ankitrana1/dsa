@@ -31,5 +31,5 @@ public class NaturalNumbers {
         print2(5);
         System.out.println();
         print3(1,5);
-    }s
+    }
 }
