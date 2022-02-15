@@ -23,6 +23,39 @@ public class SodukoSolver {
         return true;
     }
 
+    //remove unnecessary double for loop
+    private static boolean solveSudoku2(char[][] board, int i, int j) {
+        int m = 9, n = 9;
+        if (j == n) {
+            // reach the last column, next row
+            return solveSudoku2(board, i + 1, 0);
+        }
+        if (i == m) {
+            // reach the last row, finish
+            return true;
+        }
+
+        if (board[i][j] != '.') {
+            // preset number, skip
+            return solveSudoku2(board, i, j + 1);
+        }
+
+        for (char ch = '1'; ch <= '9'; ch++) {
+            // conflict with others, skip
+            if (!isValid(board, i, j, ch))
+                continue;
+
+            board[i][j] = ch;
+            // have found a solution, stop
+            if (solveSudoku2(board, i, j + 1)) {
+                return true;
+            }
+            board[i][j] = '.';
+        }
+        // for this grid, 1~9 all fail
+        return false;
+    }
+
     private static boolean isValid(char[][] board, int row, int col, char c) {
         for(int i =0; i<9; i++) {
             if(board[i][col] == c) return false;
@@ -42,9 +75,20 @@ public class SodukoSolver {
                 {'.','6','.','.','.','.','2','8','.'},
                 {'.','.','.','4','1','9','.','.','5'},
                 {'.','.','.','.','8','.','.','7','9'}};
-
         solveSudoku(board);
         print(board);
+        System.out.println();
+        char[][] board2 = {{'5','3','.','.','7','.','.','.','.'},
+                {'6','.','.','1','9','5','.','.','.'},
+                {'.','9','8','.','.','.','.','6','.'},
+                {'8','.','.','.','6','.','.','.','3'},
+                {'4','.','.','8','.','3','.','.','1'},
+                {'7','.','.','.','2','.','.','.','6'},
+                {'.','6','.','.','.','.','2','8','.'},
+                {'.','.','.','4','1','9','.','.','5'},
+                {'.','.','.','.','8','.','.','7','9'}};
+        solveSudoku2(board2, 0,0);
+        print(board2);
     }
 
     private static void print(char[][] board) {
