@@ -24,6 +24,29 @@ public class TreeUtil {
                    7
          */
     }
+
+    public static TreeNode getTree2() {
+        TreeNode root = new TreeNode(1);
+        TreeNode leaf4 = new TreeNode(7);
+        TreeNode l32 = new TreeNode(5);
+        l32.left = leaf4;
+        TreeNode leaf31 = new TreeNode(4);
+        TreeNode leaf34 = new TreeNode(9);
+        TreeNode l21 = new TreeNode(2);
+        l21.left = leaf31;
+        l21.right = l32;
+        TreeNode l22 = new TreeNode(3);
+        l22.right = leaf34;
+        root.left = l21;
+        root.right = l22;
+        return root;
+        /*
+                     1
+                  2     3
+                4   5     9
+                   7
+         */
+    }
 }
 
 class TreeNode {
