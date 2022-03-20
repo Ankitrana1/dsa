@@ -28,8 +28,10 @@ public class TreeUtil {
     public static TreeNode getTree2() {
         TreeNode root = new TreeNode(1);
         TreeNode leaf4 = new TreeNode(7);
+        TreeNode leaf42 = new TreeNode(8);
         TreeNode l32 = new TreeNode(5);
         l32.left = leaf4;
+        l32.right = leaf42;
         TreeNode leaf31 = new TreeNode(4);
         TreeNode leaf34 = new TreeNode(9);
         TreeNode l21 = new TreeNode(2);
@@ -44,7 +46,7 @@ public class TreeUtil {
                      1
                   2     3
                 4   5     9
-                   7
+                   7 8
          */
     }
 }
