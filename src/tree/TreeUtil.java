@@ -34,10 +34,12 @@ public class TreeUtil {
         l32.right = leaf42;
         TreeNode leaf31 = new TreeNode(4);
         TreeNode leaf34 = new TreeNode(9);
+        TreeNode leaf33 = new TreeNode(6);
         TreeNode l21 = new TreeNode(2);
         l21.left = leaf31;
         l21.right = l32;
         TreeNode l22 = new TreeNode(3);
+        l22.left = leaf33;
         l22.right = leaf34;
         root.left = l21;
         root.right = l22;
@@ -45,8 +47,8 @@ public class TreeUtil {
         /*
                      1
                   2     3
-                4   5     9
-                   7 8
+                4   5|6    9
+                  7    8
          */
     }
 }
