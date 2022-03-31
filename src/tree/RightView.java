@@ -1,32 +1,33 @@
 package tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.TreeMap;
 
 public class RightView {
 
     private static void rightView(TreeNode root) {
-        TreeMap<Integer, Integer> map = new TreeMap<>();
+        ArrayList<Integer> res = new ArrayList<>();
 
-        Queue<Node> queue = new LinkedList<>();
-        queue.offer(new Node(root, 0));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
 
         while(!queue.isEmpty()) {
-            Node node = queue.poll();
-            TreeNode temp = node.node;
+            int size = queue.size();
 
-            map.put(node.level, temp.data);
-
-            if(temp.left != null) {
-                queue.offer(new Node(temp.left, node.level + 1));
-            }
-            if(temp.right != null) {
-                queue.offer(new Node(temp.right, node.level + 1));
+            for(int i = 0; i<size; i++) {
+                TreeNode temp = queue.poll();
+                if(i == 0)
+                    res.add(temp.data);
+                if(temp.right != null) {
+                    queue.offer(temp.right);
+                }
+                if(temp.left != null) {
+                    queue.offer(temp.left);
+                }
             }
         }
-
-        for(Integer i : map.values())
+        for(Integer i : res)
             System.out.print(i + " ");
     }
 
@@ -34,15 +35,5 @@ public class RightView {
         rightView(TreeUtil.getTree2());
         System.out.println();
         rightView(TreeUtil.getTree());
-    }
-
-    private static class Node {
-        public TreeNode node;
-        public int level;
-
-        public Node(TreeNode node, int level) {
-            this.node = node;
-            this.level = level;
-        }
     }
 }
