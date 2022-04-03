@@ -17,6 +17,9 @@ public class LowestCommonAncestor {
             return root;
     }
 
+    //This lca algorithm assumes either both target nodes are present in the tree or both are not there.
+    //No case for single target node to be present, otherwise this algo will not work.
+    //Follow the brute force for it.
     public static void main(String[] args) {
         TreeNode root = TreeUtil.getTree();
         System.out.println(lca(root, root.left.left, root.right.right).data);
