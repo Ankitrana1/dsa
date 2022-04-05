@@ -2,6 +2,7 @@ package tree;
 
 public class CountNodesOfCompleteBinaryTree {
 
+    //Time Complexity : O(logN)
     private static int countNodes(TreeNode root) {
         if(root == null) return 0;
         int lh = getLeftHeight(root);
